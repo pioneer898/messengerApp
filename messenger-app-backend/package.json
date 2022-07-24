@@ -1,0 +1,18 @@
+{
+  "name": "messenger-app",
+  "version": "1.0.0",
+  "description": "Simple Messenger App",
+  "author": "Patrick Parker",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "http": "^0.0.1-security",
+    "memorystore": "^1.6.7",
+    "socket.io": "^4.5.1"
+  }
+}

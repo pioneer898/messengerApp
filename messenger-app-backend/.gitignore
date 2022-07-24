@@ -5,6 +5,8 @@
 npm-debug.log
 yarn-error.logs
 
+/frontend-dist
+
 # System files
 .DS_Store
 Thumbs.db

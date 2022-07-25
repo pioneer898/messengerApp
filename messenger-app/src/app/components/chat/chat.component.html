@@ -1,0 +1,28 @@
+<div class="chatCardContainer" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+  <mat-card class="chatCard">
+    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="15px" fxFlexFill>
+      <h1>{{roomId}}</h1>
+      <mat-card class="chatroom">
+        <div id="chatroom" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+
+          <div *ngFor="let message of messages" [fxLayout]="message.from.id != personId ? 'row-reverse' : 'row'">
+            <mat-card [class.isOwn]="message.from.id == personId" [class.isOther]="message.from.id != personId">
+              <h2 *ngIf="message.from.id != personId">{{message.from.id}}</h2>
+              <div class="messageText">{{message.text}}</div>
+            </mat-card>
+          </div>
+
+        </div>
+      </mat-card>
+      <mat-card class="response" fxLayout="row" fxLayoutAlign="space-between center">
+          <form class="messageInput">
+            <mat-form-field fxFlexFill>
+              <!-- <mat-label>Message</mat-label> -->
+              <textarea class="inputTextArea" matInput type="text" [formControl]="messageText" autocomplete="off"></textarea>
+            </mat-form-field>
+          </form>
+        <button class="sendButton" mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+      </mat-card>
+    </div>
+  </mat-card>
+</div>

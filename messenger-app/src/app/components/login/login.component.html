@@ -1,0 +1,22 @@
+<div class="loginCardContainer" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+  <mat-card class="loginCard">
+    <div  fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="15px">
+      <span class="material-icons mainIcon">question_answer</span>
+      <h2>Messenger</h2>
+      <form>
+        <mat-form-field>
+          <mat-label>Room Id</mat-label>
+          <input matInput type="text" [formControl]="roomId" required>
+          <mat-error *ngIf="roomId.hasError('required')">Requried</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput type="text" [formControl]="personId" required (keydown.enter)='startSession()'>
+          <mat-error *ngIf="personId.hasError('required')">Requried</mat-error>
+        </mat-form-field>
+      </form>
+      <button mat-raised-button color="primary" (click)="startSession()">Enter</button>
+    </div>
+  </mat-card>
+</div>

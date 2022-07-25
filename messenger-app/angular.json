@@ -73,7 +73,9 @@
               "browserTarget": "messenger-app:build:production"
             },
             "development": {
-              "browserTarget": "messenger-app:build:development"
+              "browserTarget": "messenger-app:build:development",
+              "proxyConfig": "src/proxy.conf.json",
+              "port": 64051
             }
           },
           "defaultConfiguration": "development"

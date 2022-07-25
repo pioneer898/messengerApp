@@ -1,0 +1,48 @@
+.chatCard{
+  width: 75%;
+  height: 85%;
+  background-color: #dbdbdb;
+}
+.chatroom{
+  width: 95%;
+  height: 80%;
+}
+#chatroom{
+  height: 100%;
+  overflow-y: scroll;
+}
+#chatroom::-webkit-scrollbar { 
+  display: none; 
+}
+.chatroom div {
+  padding-bottom: 1em;
+}
+.response{
+  width: 95%;
+  height: 10%;
+}
+.messageText{
+  white-space: pre-line
+}
+.messageInput{
+  width: 90%;
+  height: 80%;
+  background-color: #91ff9e;
+}
+.inputTextArea{
+  width: 95%;
+  height: 80%;
+}
+.sendButton{
+  margin-left: 6px;
+}
+.isOwn{
+  background-color: #91ff9e;
+  width: 65%;
+}
+.isOther{
+  background-color: #dbdbdb;
+  text-align: right;
+  width: 65%;
+  right: 0;
+}

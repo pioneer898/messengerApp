@@ -1,4 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	background: transparent;
+}
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	font-weight: 400;
+}
+body, #bg::before {
+	background: url(assets/images/eastshade.png) no-repeat center center; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+#bg {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+#bg::before {
+	content: '';
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	margin: -30px;
+	z-index: 0;
+	-webkit-filter: blur(2px);
+	filter: blur(2px);
+	transition: filter 1.0s
+}
+#bg:hover::before {
+	-webkit-filter: blur(0px);
+	filter: blur(0px);
+}
+.mAuto{
+	margin: auto;
+}
+.fullW{
+	width:100%;
+}
+.cent{
+	text-align: center;
+}
+.lightCard{
+  background-color: #646464;
+  margin: 20px;
+  min-width: 350px;
+	min-height: 350px;
+}
+.lightCard mat-card-title{
+  min-height: 35px;
+}
+mat-divider.extraSpace{
+	position: relative !important;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.saveSpinner{
+  top: -8px;
+}

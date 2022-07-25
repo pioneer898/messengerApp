@@ -13,12 +13,12 @@ import { MessengerService } from '../../services/messenger.service';
 })
 export class ChatComponent implements OnInit {
   private unsubscribeAll$: Subject<any> = new Subject<any>();
-  private pollingInterval$ = interval(1000);
+  private pollingInterval$ = interval(1200);
   public messagesPolling$ = new BehaviorSubject<boolean>(false);
   roomId: any;
   personId: any;
   messageText = new FormControl('',[Validators.required]);
-  messages: any[] = [];
+  messages: Message[] = [];
 
   constructor(
     private messenger: MessengerService,
@@ -51,13 +51,22 @@ export class ChatComponent implements OnInit {
       takeUntil(this.unsubscribeAll$),
       tap((d:any)=>{
         if(d.success){
-          this.messages = d.messages;
+          this.updateMessagesArray(d.messages);
           this.messagesPolling$.next(false);
         } else {
           //Show alert
         }
       }),
     ).subscribe();
+  }
+
+  updateMessagesArray(newMessageArray: Message[]){
+    for(var m=0;m<newMessageArray.length;m++){
+      let newMessage = newMessageArray[m];
+      if(this.messages[m]?.id != newMessage.id){
+        this.messages.splice(m,0,newMessage);
+      }
+    }
   }
 
   sendMessage(){

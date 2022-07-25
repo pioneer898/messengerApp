@@ -42,7 +42,7 @@ app.use(session({
 app.use('/',express.static('./frontend-dist/'));
 app.use('/chat',express.static('./frontend-dist/'));
 
-// Curremt State
+// Current State
 const rooms = {};
 
 app.post('/api/joinSession',async(req,res,next)=>{

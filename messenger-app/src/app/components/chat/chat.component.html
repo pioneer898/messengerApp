@@ -9,6 +9,7 @@
             <mat-card [class.isOwn]="message.from.id == personId" [class.isOther]="message.from.id != personId">
               <h2 *ngIf="message.from.id != personId">{{message.from.id}}</h2>
               <div class="messageText">{{message.text}}</div>
+              <div class="timestamp">{{message.timestamp}}</div>
             </mat-card>
           </div>
 

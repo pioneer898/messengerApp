@@ -75,6 +75,7 @@ export class ChatComponent implements OnInit {
     }
     let message:Message = {
       id: null,
+      timestamp: null,
       from: this.personId,
       text: this.messageText.value,
       media: null

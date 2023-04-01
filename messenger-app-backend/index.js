@@ -43,6 +43,7 @@ app.use('/',express.static('./frontend-dist/'));
 app.use('/chat',express.static('./frontend-dist/'));
 
 // Current State
+const adminIds = ['Patrick'];
 const rooms = {};
 
 app.post('/api/joinSession',async(req,res,next)=>{
@@ -51,7 +52,7 @@ app.post('/api/joinSession',async(req,res,next)=>{
   let room = new Room({id:roomId});
   let person = new Person({id:personId});
 
-  if(!room.valid() || !person.valid()){
+  if(!room.valid() || !person.valid() || person.id == 'System'){
     res.json({
       success: false
     });
@@ -77,11 +78,17 @@ app.post('/api/message',async(req,res,next)=>{
   
   if(!rooms[roomId] || !rooms[roomId]?.getPerson(personId) || !message.valid()){
     res.json({
-      success: false
+      success: false,
+      error: 'Invalid Room/Person/Message'
     });
     return;
   }
+
   rooms[roomId].addMessage(message);
+
+  if(adminIds.indexOf(personId) >= 0 && req.body.message.text == '/stats'){
+    rooms[roomId].addStatMessage(rooms[roomId]?.getPerson(personId));
+  }
   
   res.json({
     success: true
@@ -101,7 +108,7 @@ app.get('/api/messages',async(req,res,next)=>{
   
   res.json({
     success: true,
-    messages: rooms[roomId].messages
+    messages: rooms[roomId].getMessages(rooms[roomId].getPerson(personId))
   });
 });
 

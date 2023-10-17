@@ -22,5 +22,3 @@ Features that I would implement with further development of the project
 
 ## Credits
 This repo was developed by [Pioneer898](https://github.com/pioneer898/)
-
-### Special thanks to my interview team at [Ezoic](https://www.ezoic.com/) for the opportunity to demo my work!
